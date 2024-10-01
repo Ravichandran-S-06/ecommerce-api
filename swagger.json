@@ -1,0 +1,88 @@
+{
+    "swagger": "2.0",
+    "info": {
+      "version": "1.0.0",
+      "title": "E-commerce API",
+      "description": "API for managing products, users, orders, and shopping carts"
+    },
+    "host": "localhost:5000",
+    "basePath": "/api",
+    "schemes": ["http"],
+    "paths": {
+      "/products/add": {
+        "post": {
+          "summary": "Add a new product",
+          "consumes": ["application/json"],
+          "parameters": [
+            {
+              "in": "body",
+              "name": "Product",
+              "description": "Product details",
+              "schema": {
+                "$ref": "#/definitions/Product"
+              }
+            }
+          ],
+          "responses": {
+            "201": {
+              "description": "Product added successfully"
+            }
+          }
+        }
+      },
+      "/auth/register": {
+        "post": {
+          "summary": "Register a new user",
+          "consumes": ["application/json"],
+          "parameters": [
+            {
+              "in": "body",
+              "name": "User",
+              "description": "User details",
+              "schema": {
+                "$ref": "#/definitions/User"
+              }
+            }
+          ],
+          "responses": {
+            "201": {
+              "description": "User registered successfully"
+            }
+          }
+        }
+      }
+    },
+    "definitions": {
+      "Product": {
+        "required": ["name", "price", "stock"],
+        "properties": {
+          "name": {
+            "type": "string",
+            "example": "T-shirt"
+          },
+          "price": {
+            "type": "number",
+            "example": 25.99
+          },
+          "stock": {
+            "type": "integer",
+            "example": 50
+          }
+        }
+      },
+      "User": {
+        "required": ["email", "password"],
+        "properties": {
+          "email": {
+            "type": "string",
+            "example": "user@example.com"
+          },
+          "password": {
+            "type": "string",
+            "example": "password123"
+          }
+        }
+      }
+    }
+  }
+  
